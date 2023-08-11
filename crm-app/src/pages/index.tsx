@@ -1,9 +1,6 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
-import Dashboard from '@/pages/dashboard/Dashboard';
-import Login from '@/pages/login/Login';
-import Header from '@/components/Header';
-import SideMenu from '@/components/SideMenu';
+import Login from '@/components/Login';
 
 export default function Home() {
   return (
@@ -15,10 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main}`}>
-        <Header />
-        <SideMenu />
-        <Dashboard />
-        <Login />
+        <Login />  
       </main>
     </>
   )
