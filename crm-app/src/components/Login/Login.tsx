@@ -13,6 +13,7 @@ import { teal } from '@mui/material/colors';
 import '@/styles/Home.module.css'
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import SvgIcon from '@mui/material/SvgIcon';
 import Card from '@mui/material/Card';
 
@@ -30,9 +31,10 @@ function Copyright(props: any) {
   );
 }
 
+// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignUpSide() {
+export default function SignInSide() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -52,91 +54,6 @@ const signIn = () => {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-          <Box
-            sx={{
-              my: 9,
-              mx: 4,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Avatar sx={{ m: 1, mb: 2, bgcolor: teal[600], width: '80px', height:'80px' }} />
-            <Typography component="h1" variant="h5">
-              Sign Up
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="default" sx={{ color: teal[300]}}/>}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid>
-            </Grid>
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2, bgcolor: teal[500] }}
-              >
-                Sign Up
-              </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Link href="../" variant="body2" sx={{ color: teal[300]}}>
-                  Already have an account? Sign in
-                </Link> 
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 5 }} />
-            </Box>
-          </Box>
-        </Grid>
-
         <Grid
           item
           xs={false}
@@ -244,7 +161,254 @@ z"/>
           </Card>
 
         </Grid>
+
+        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Box
+            sx={{
+              my: 9,
+              mx: 4,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <Avatar sx={{ m: 1, mb: 3, bgcolor: teal[700], width: '80px', height:'80px' }} />
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+              <FormControlLabel
+                control={<Checkbox value="remember" color='default' sx={{ color: teal[300] }}/>}
+                label="Remember account"
+              />
+              <Button
+                onClick={ () => signIn() }
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, bgcolor: teal[500] }}
+              >
+                Sign In
+              </Button>
+              <Grid container>
+                <Grid item xs>
+                  <Link href="#" variant="body2" sx={{ color: teal[300] }}>
+                    Forgot password?
+                  </Link>
+                </Grid>
+                <Grid item>
+                  <Link href="/login" variant="body2" sx={{ color: teal[300] }}> {/* renderizado a pagina de registro sencillo */}
+                    {"Don't have an account? Sign Up"}
+                  </Link>
+                </Grid>
+              </Grid>
+              <Copyright sx={{ mt: 5 }} />
+            </Box>
+          </Box>
+        </Grid>
       </Grid>
     </ThemeProvider>
   );
 }
+
+
+
+
+// import React from 'react';
+// import { createTheme, ThemeProvider } from '@mui/material/styles';
+// import Paper from '@mui/material/Paper';
+// import Button from '@mui/material/Button';
+// import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
+// import Typography from '@mui/material/Typography';
+// import Box from '@mui/material/Box';
+// import NextLink from 'next/link';
+// import Link from '@mui/material/Link'
+// import { Formik, Form, Field } from 'formik';
+// import { TextField } from 'formik-mui';
+
+// const styles = {
+  
+//   loginContainer: {
+//     minWidth: 320,
+//     maxWidth: 400,
+//     height: 'auto',
+//     position: 'absolute' as any,
+//     top: '20%',
+//     left: 0,
+//     right: 0,
+//     margin: 'auto',
+//   },
+//   formHeader: {
+//     color: 'blue',
+//     fontColor: 'navy',
+//     fontSize: 20,
+//     maxWidth: 500,
+//   },
+//   ListSubheader: {
+//     color: 'navy',
+//     fontColor: 'navy',
+//     fontSize: 16,
+//     maxWidth: 500,
+//   },
+//   paper: {
+//     padding: 20,
+//     overflow: 'auto',
+//   },
+//   loginBtn: {
+//     float: 'right' as any,
+//   },
+// };
+
+// interface SignInPageProps {
+//   onSignInClick: (credential: any) => void;
+//   // errorMessage?: string;
+// }
+
+// interface SignInState {
+//   canSubmit: boolean;
+//   username: string;
+//   password: string;
+//   formError: string;
+//   errorMessage?: string;
+// }
+
+
+// function LinearProgressWithLabel(props: LinearProgressProps & { value: number }) {
+//   return (
+//     <Box sx={{ display: 'flex', alignItems: 'center' }}>
+//       <Box sx={{ width: '100%', mr: 1 }}>
+//         <LinearProgress variant="determinate" {...props} />
+//       </Box>
+//       <Box sx={{ minWidth: 35 }}>
+//         <Typography variant="body2" color="text.secondary">{`${Math.round(
+//           props.value,
+//         )}%`}</Typography>
+//       </Box>
+//     </Box>
+//   );
+// }
+
+// function LinearWithValueLabel() {
+//   const [progress, setProgress] = React.useState(10);
+
+//   React.useEffect(() => {
+//     const timer = setInterval(() => {
+//       setProgress((prevProgress) => (prevProgress >= 100 ? 10 : prevProgress + 10));
+//     }, 800);
+//     return () => {
+//       clearInterval(timer);
+//     };
+//   }, []);
+
+//   return (
+//     <Box sx={{ width: '100%' }}>
+//       <LinearProgressWithLabel value={progress} />
+//     </Box>
+//   );
+// }
+
+
+
+
+// const defaultTheme = createTheme();
+
+// const SignInPage: React.FC<SignInPageProps> = ({
+//   //  errorMessage,
+//   onSignInClick,
+// }) => {
+//   return (
+//     <ThemeProvider theme={defaultTheme}>
+//       <div>
+//         <div style={styles.loginContainer}>
+//           <Paper style={styles.paper}>
+//             <p style={styles.formHeader}>React Redux CRM</p>
+//             <p style={styles.ListSubheader}>Version 2.0.0</p>
+//             <Formik
+//               initialValues={{
+//                 username: 'admin@test.com',
+//                 password: 'password',
+//               }}
+//               validate={values => {
+//                 const errors: Partial<SignInState> = {};
+//                 if (!values.username) {
+//                   errors.username = 'Required';
+//                 } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.username)) {
+//                   errors.username = 'Invalid email address';
+//                 }
+
+//                 if (!values.password) {
+//                   errors.password = 'Required';
+//                 }
+//                 return errors;
+//               }}
+//               onSubmit={(values, { setSubmitting }) => {
+//                 onSignInClick(values);
+
+//               }}
+//             >
+//               {({ submitForm, isSubmitting }) => (
+//                 <Form>
+//                   <div>
+//                     <Field
+//                       variant="outlined"
+//                       component={TextField}
+//                       placeholder="test@test.com"
+//                       name="username"
+//                       label="Login ID"
+//                       fullWidth={true}
+//                       required
+//                     />
+//                   </div>
+//                   <br />
+//                   <div>
+//                     <Field
+//                       variant="outlined"
+//                       component={TextField}
+//                       placeholder="Password"
+//                       name="password"
+//                       label="Password"
+//                       fullWidth={true}
+//                       type="password"
+//                       required
+//                     />
+//                   </div>
+//                   {isSubmitting && <LinearProgress />}
+//                   <br />
+//                   <div>
+//                     <NextLink href='/login' passHref>
+//                       <Link>
+//                         SignIn
+//                       </Link>
+//                     </NextLink>
+//                   </div>
+//                </Form>
+//               )}
+//             </Formik>
+//           </Paper>
+//         </div>
+//       </div>
+//     </ThemeProvider>
+//   );
+// };
+
+// export default SignInPage;
